@@ -51,6 +51,7 @@ namespace UnitsNet.Units
         Petawatt = 23,
         Picowatt = 24,
         Terawatt = 25,
+        TonOfRefrigeration = 36,
         Watt = 26,
     }
 

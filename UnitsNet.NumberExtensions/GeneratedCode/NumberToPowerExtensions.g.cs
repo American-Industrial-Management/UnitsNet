@@ -128,6 +128,10 @@ namespace UnitsNet.NumberExtensions.NumberToPower
         public static Power Terawatts<T>(this T value) =>
             Power.FromTerawatts(Convert.ToDouble(value));
 
+        /// <inheritdoc cref="Power.FromTonsOfRefrigeration(UnitsNet.QuantityValue)" />
+        public static Power TonsOfRefrigeration<T>(this T value) =>
+            Power.FromTonsOfRefrigeration(Convert.ToDouble(value));
+
         /// <inheritdoc cref="Power.FromWatts(UnitsNet.QuantityValue)" />
         public static Power Watts<T>(this T value) =>
             Power.FromWatts(Convert.ToDouble(value));

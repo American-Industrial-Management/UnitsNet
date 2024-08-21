@@ -289,6 +289,11 @@ namespace UnitsNet
         public double Terawatts => As(PowerUnit.Terawatt);
 
         /// <summary>
+        ///     Gets a <see cref="double"/> value of this quantity converted into <see cref="PowerUnit.TonOfRefrigeration"/>
+        /// </summary>
+        public double TonsOfRefrigeration => As(PowerUnit.TonOfRefrigeration);
+
+        /// <summary>
         ///     Gets a <see cref="double"/> value of this quantity converted into <see cref="PowerUnit.Watt"/>
         /// </summary>
         public double Watts => As(PowerUnit.Watt);
@@ -324,6 +329,7 @@ namespace UnitsNet
             unitAbbreviationsCache.PerformAbbreviationMapping(PowerUnit.Petawatt, new CultureInfo("en-US"), false, true, new string[]{"PW"});
             unitAbbreviationsCache.PerformAbbreviationMapping(PowerUnit.Picowatt, new CultureInfo("en-US"), false, true, new string[]{"pW"});
             unitAbbreviationsCache.PerformAbbreviationMapping(PowerUnit.Terawatt, new CultureInfo("en-US"), false, true, new string[]{"TW"});
+            unitAbbreviationsCache.PerformAbbreviationMapping(PowerUnit.TonOfRefrigeration, new CultureInfo("en-US"), false, true, new string[]{"TR"});
             unitAbbreviationsCache.PerformAbbreviationMapping(PowerUnit.Watt, new CultureInfo("en-US"), false, true, new string[]{"W"});
         }
 
@@ -626,6 +632,17 @@ namespace UnitsNet
         {
             decimal value = (decimal) terawatts;
             return new Power(value, PowerUnit.Terawatt);
+        }
+
+        /// <summary>
+        ///     Creates a <see cref="Power"/> from <see cref="PowerUnit.TonOfRefrigeration"/>.
+        /// </summary>
+        /// <exception cref="ArgumentException">If value is NaN or Infinity.</exception>
+        [Windows.Foundation.Metadata.DefaultOverload]
+        public static Power FromTonsOfRefrigeration(double tonsofrefrigeration)
+        {
+            decimal value = (decimal) tonsofrefrigeration;
+            return new Power(value, PowerUnit.TonOfRefrigeration);
         }
 
         /// <summary>
@@ -954,6 +971,7 @@ namespace UnitsNet
                 case PowerUnit.Petawatt: return (_value) * 1e15m;
                 case PowerUnit.Picowatt: return (_value) * 1e-12m;
                 case PowerUnit.Terawatt: return (_value) * 1e12m;
+                case PowerUnit.TonOfRefrigeration: return _value * 3516.8528420667m;
                 case PowerUnit.Watt: return _value;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to base units.");
@@ -994,6 +1012,7 @@ namespace UnitsNet
                 case PowerUnit.Petawatt: return (baseUnitValue) / 1e15m;
                 case PowerUnit.Picowatt: return (baseUnitValue) / 1e-12m;
                 case PowerUnit.Terawatt: return (baseUnitValue) / 1e12m;
+                case PowerUnit.TonOfRefrigeration: return baseUnitValue / 3516.8528420667m;
                 case PowerUnit.Watt: return baseUnitValue;
                 default:
                     throw new NotImplementedException($"Can not convert {Unit} to {unit}.");
